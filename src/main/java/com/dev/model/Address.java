@@ -1,6 +1,6 @@
 package com.dev.model;
 
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@TypeDef(name = "json", typeClass = JsonStringType.class)
+@TypeDef(name = "json", typeClass = JsonType.class)
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
