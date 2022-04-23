@@ -7,11 +7,14 @@ import com.dev.repository.UserRepository;
 import com.dev.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -31,8 +34,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> readUsers(String url) {
-        User[] users = restTemplate.getForObject(url, User[].class);
-        assert users != null;
+        ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(url, User[].class);
+        User[] users = responseEntity.getBody();
+        if (Objects.isNull(users)) {
+            return new ArrayList<>();
+        }
+        log.info("Status: {}; count of users: {}", responseEntity.getStatusCode(), responseEntity.getBody().length);
         return Arrays.asList(users);
     }
 

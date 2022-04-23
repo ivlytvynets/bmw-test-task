@@ -22,10 +22,8 @@ public class MainRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("reading users");
         List<User> users = userService.readUsers(URL);
-        log.info(String.valueOf(users));
         log.info("validating users");
         List<User> validatedUsers = userService.validateUsersByEmail(users, REGEX);
-        log.info(String.valueOf(validatedUsers));
         log.info("saving users to db");
         userService.saveUsers(validatedUsers);
     }
