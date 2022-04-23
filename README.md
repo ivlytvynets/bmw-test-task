@@ -15,7 +15,7 @@ https://jsonplaceholder.typicode.com/users
 2. Create a user with the name 'postgres' and the password 'password'.
 3. Create a database with name 'bmw' and set user with name 'postgres' as owner.
 4. Clone project.
-5. Run following commands:
+5. Run the following commands:
 - `mvn clean package`
 - `java -jar target/bmw-test-task-0.0.1-SNAPSHOT.jar`
 6. Open `logs/spring.log` to see logs.
