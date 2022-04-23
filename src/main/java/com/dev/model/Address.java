@@ -26,4 +26,11 @@ public class Address {
     @Type(type = "json")
     @Column(name = "geo", columnDefinition = "json")
     private Location geo;
+
+    @Data
+    private static class Location {
+        private Double lat;
+
+        private Double lng;
+    }
 }
